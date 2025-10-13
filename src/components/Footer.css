@@ -1,0 +1,7 @@
+.footer {
+  padding: 20px;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  transition: background-color 0.3s ease, border 0.3s ease;
+}

@@ -1,0 +1,83 @@
+.mui-switch {
+  position: relative;
+  display: inline-block;
+  width: 62px;
+  height: 34px;
+  cursor: pointer;
+}
+
+/* Κρύβουμε το πραγματικό checkbox */
+.mui-switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Το "track" - το οβάλ φόντο του διακόπτη */
+.mui-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #aab4be; /* Χρώμα track για light mode */
+  transition: .4s;
+  border-radius: 34px;
+}
+
+/* Το "thumb" - το κυκλάκι που κινείται και περιέχει τα εικονίδια */
+.mui-thumb {
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #001e3c; /* Χρώμα thumb για light mode */
+  transition: .4s;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Κρύβουμε το εικονίδιο που δεν πρέπει να φαίνεται */
+}
+
+/* Στυλ για τα εικονίδια */
+.sun-icon, .moon-icon {
+  font-size: 16px;
+  color: white;
+  transition: opacity 0.2s ease, transform 0.4s ease;
+  position: absolute; /* Τα τοποθετούμε το ένα πάνω στο άλλο */
+}
+
+/* --- ΣΤΥΛ ΓΙΑ ΤΟ LIGHT MODE (ΑΡΧΙΚΗ ΚΑΤΑΣΤΑΣΗ) --- */
+.sun-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+.moon-icon {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+/* --- ΣΤΥΛ ΓΙΑ ΤΟ DARK MODE (OTAN TO CHECKBOX ΕΙΝΑΙ CHECKED) --- */
+
+/* Αλλάζουμε το χρώμα του track */
+input:checked ~ .mui-slider {
+  background-color: #8796A5;
+}
+
+/* Μετακινούμε το thumb και αλλάζουμε το χρώμα του */
+input:checked ~ .mui-thumb {
+  background-color: #003892;
+  transform: translateX(28px);
+}
+
+/* Εμφανίζουμε το φεγγάρι και κρύβουμε τον ήλιο */
+input:checked ~ .mui-thumb .sun-icon {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+input:checked ~ .mui-thumb .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+}

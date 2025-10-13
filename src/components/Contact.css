@@ -1,0 +1,40 @@
+.contact-subtitle {
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+}
+
+.contact-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.contact-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 30px 40px;
+  flex: 1;
+  max-width: 320px;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.contact-icon {
+  color: var(--text-highlight);
+  margin-bottom: 15px;
+}
+
+.contact-card h3 {
+  font-size: 1.5rem;
+}
+
+.contact-card p {
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+
+.contact-card button {
+  width: 100%;
+  margin: 0;
+}
