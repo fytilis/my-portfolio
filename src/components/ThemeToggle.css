@@ -63,12 +63,12 @@
 
 /* Αλλάζουμε το χρώμα του track */
 input:checked ~ .mui-slider {
-  background-color: #8796A5;
+  background-color: var(--text-highlight);
 }
 
 /* Μετακινούμε το thumb και αλλάζουμε το χρώμα του */
 input:checked ~ .mui-thumb {
-  background-color: #003892;
+  background-color: #16191d;
   transform: translateX(28px);
 }
 

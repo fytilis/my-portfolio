@@ -1,45 +1,82 @@
-/* Ορίζουμε τις μεταβλητές για το light theme */
+/* Light theme tokens */
 body.light {
-  --bg-primary: #f8f9fa;
+  --bg-primary: #f8f9fb;
   --bg-secondary: #ffffff;
-  --text-primary: #212529;
-  --text-secondary: #495057;
-  --text-highlight: #007bff;
+  --text-primary: #1a1d21;
+  --text-secondary: #56606b;
+  --text-highlight: #0066ff;
+  --accent-secondary: #7c5cff;
   --card-border: #e9ecef;
-  --tag-bg: #e9ecef;
-  --button-primary-bg: #333;
-  --button-secondary-border: #ccc;
+  --tag-bg: #eef1f5;
+  --button-primary-bg: #1a1d21;
+  --button-secondary-border: #d7dce1;
+  --shadow-color: rgba(23, 32, 46, 0.08);
+  --shadow-color-strong: rgba(23, 32, 46, 0.14);
 }
 
-/* Ορίζουμε τις ΙΔΙΕΣ μεταβλητές με ΑΛΛΕΣ τιμές για το dark theme */
+/* Dark theme tokens */
 body.dark {
-  --bg-primary: #121212;
-  --bg-secondary: #1e1e1e;
-  --text-primary: #e0e0e0;
-  --text-secondary: #a0a0a0;
-  --text-highlight: #2997ff;
-  --card-border: #333333;
-  --tag-bg: #333333;
-  --button-primary-bg: #f8f9fa;
-  --button-secondary-border: #555;
+  --bg-primary: #0d0f12;
+  --bg-secondary: #16191d;
+  --text-primary: #eef1f5;
+  --text-secondary: #98a2ad;
+  --text-highlight: #4da3ff;
+  --accent-secondary: #9d85ff;
+  --card-border: #2a2e34;
+  --tag-bg: #21252b;
+  --button-primary-bg: #f8f9fb;
+  --button-secondary-border: #383e46;
+  --shadow-color: rgba(0, 0, 0, 0.35);
+  --shadow-color-strong: rgba(0, 0, 0, 0.5);
+}
+
+:root {
+  --font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Helvetica Neue', sans-serif;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --nav-height: 72px;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  /* Χρησιμοποιούμε τις μεταβλητές */
+
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  
-  /* Ομαλή μετάβαση στα χρώματα */
+
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+::selection {
+  background: var(--accent-secondary);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--text-highlight);
+  outline-offset: 2px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
 }

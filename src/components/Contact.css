@@ -13,16 +13,27 @@
 .contact-card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--card-border);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 30px 40px;
   flex: 1;
   max-width: 320px;
-  transition: background-color 0.3s ease, border 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--text-highlight);
+  box-shadow: 0 16px 28px -14px var(--shadow-color-strong);
 }
 
 .contact-icon {
   color: var(--text-highlight);
   margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+  transform: scale(1.1) rotate(-4deg);
 }
 
 .contact-card h3 {

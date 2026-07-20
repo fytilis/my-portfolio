@@ -5,34 +5,12 @@
 
 .about-intro {
   max-width: 700px;
-  margin: 0 auto 40px auto;
+  margin: 0 auto 20px auto;
   font-size: 1.1rem;
   color: var(--text-secondary);
+  text-align: left;
 }
 
-.about-cards {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.about-card {
-  background: var(--bg-primary);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 30px;
-  max-width: 300px;
-  flex: 1;
-  transition: background-color 0.3s ease, border 0.3s ease;
-}
-
-.about-icon {
-  color: var(--text-highlight);
-  margin-bottom: 15px;
-}
-
-.about-card h3 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
+.about-intro:last-of-type {
+  margin-bottom: 0;
 }

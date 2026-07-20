@@ -1,32 +1,25 @@
 import React from 'react';
 import './About.css';
-import { FaCode, FaLightbulb, FaRocket } from 'react-icons/fa';
+import { useReveal } from '../hooks/useReveal';
 
 const About = () => {
+  const { ref, isVisible } = useReveal();
   return (
-    <section id="about">
-      <h2>About Me</h2>
-      <p className="about-intro">
-        I'm a Computer Science and Engineering student with a passion for building software that solves
-        real problems. My journey in tech is driven by curiosity and the desire to create meaningful
-        digital experiences.
-      </p>
-      <div className="about-cards">
-        <div className="about-card">
-          <FaCode size={40} className="about-icon" />
-          <h3>Clean Code</h3>
-          <p>Writing maintainable, efficient, and elegant code is my craft.</p>
-        </div>
-        <div className="about-card">
-          <FaLightbulb size={40} className="about-icon" />
-          <h3>Problem Solver</h3>
-          <p>Turning complex challenges into simple, innovative solutions.</p>
-        </div>
-        <div className="about-card">
-          <FaRocket size={40} className="about-icon" />
-          <h3>Fast Learner</h3>
-          <p>Always exploring new technologies and pushing boundaries.</p>
-        </div>
+    <section id="about" ref={ref} className={`reveal ${isVisible ? 'is-visible' : ''}`}>
+      <div className="container">
+        <h2>About Me</h2>
+        <p className="about-intro">
+          I am a Computer Science and Engineering student who thrives at the exact intersection of
+          hardware and software. While my journey in tech started with a general curiosity about how
+          things work, it quickly evolved into a passion for systems engineering.
+        </p>
+        <p className="about-intro">
+          I specialize in bridging domains that usually stay separate. Whether I am designing custom
+          testing architectures in VHDL at the Register-Transfer Level, or developing scalable network
+          APIs to handle real-time data, my goal remains the same: to build complete, reliable systems.
+          I am driven by the challenge of taking low-level hardware constraints and transforming them
+          into accessible, high-level software solutions.
+        </p>
       </div>
     </section>
   );

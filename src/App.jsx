@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar.jsx'; // <-- Πρόσθεσε .jsx
 import Hero from './components/Hero.jsx';     // <-- Πρόσθεσε .jsx
 import About from './components/About.jsx';   // <-- Πρόσθεσε .jsx
+import Experience from './components/Experience.jsx';
 import Projects from './components/Projects.jsx'; // <-- Πρόσθεσε .jsx
 import Skills from './components/Skills.jsx';   // <-- Πρόσθεσε .jsx
 import Contact from './components/Contact.jsx'; // <-- Πρόσθεσε .jsx
@@ -14,6 +15,7 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <Experience />
       <Projects />
       <Skills />
       <Contact />

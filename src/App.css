@@ -1,57 +1,119 @@
 .App {
   text-align: center;
+  overflow-x: hidden;
 }
 
+/* Sections span the full page width so their background reaches both edges;
+   .container centers and caps the actual content inside them. */
 section {
-  padding: 60px 20px;
+  width: 100%;
+  padding: clamp(50px, 8vw, 90px) 0;
+  box-sizing: border-box;
+}
+
+.container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 h1, h2, h3 {
   margin-top: 0;
+  font-family: var(--font-heading);
 }
 
 h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+/* Small accent bar under every section heading */
+.container > h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 18px;
+}
+
+.container > h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  border-radius: 4px;
+  background: var(--text-highlight);
 }
 
 p {
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* General Button Styles */
 .primary-button {
   background-color: var(--button-primary-bg);
-  color: var(--bg-secondary); /* Αντίστροφο χρώμα για αντίθεση */
+  color: var(--bg-secondary);
   border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 13px 26px;
+  border-radius: 10px;
   font-size: 1rem;
+  font-family: var(--font-body);
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
   margin: 0 10px;
+  box-shadow: 0 6px 16px -8px var(--shadow-color-strong);
 }
 
 .primary-button:hover {
+  transform: translateY(-2px);
   opacity: 0.9;
+  box-shadow: 0 10px 20px -8px var(--shadow-color-strong);
+}
+
+.primary-button:active {
+  transform: translateY(-1px);
 }
 
 .secondary-button {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   border: 1px solid var(--button-secondary-border);
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 13px 26px;
+  border-radius: 10px;
   font-size: 1rem;
+  font-family: var(--font-body);
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   margin: 0 10px;
 }
 
 .secondary-button:hover {
-  background-color: var(--bg-primary);
+  border-color: var(--text-highlight);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -10px var(--shadow-color);
+}
+
+/* Scroll-reveal utility, toggled by the useReveal hook */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+    margin: 8px 0;
+  }
 }

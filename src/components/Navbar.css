@@ -2,9 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  height: var(--nav-height);
+  padding: 0 2rem;
   background-color: var(--bg-secondary);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 12px var(--shadow-color);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -12,28 +13,107 @@
 }
 
 .navbar-logo {
-  font-weight: bold;
+  font-family: var(--font-heading);
+  font-weight: 700;
   font-size: 1.5rem;
+}
+
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 4px;
 }
 
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.75rem;
   margin: 0;
   padding: 0;
   align-items: center;
 }
 
 .navbar-links a {
+  position: relative;
   text-decoration: none;
   color: var(--text-primary);
   font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:not(.github-button)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--text-highlight);
+  transition: width 0.25s ease;
+}
+
+.navbar-links a:not(.github-button):hover::after,
+.navbar-links a.active::after {
+  width: 100%;
+}
+
+.navbar-links a.active {
+  color: var(--text-highlight);
 }
 
 .navbar-links a.github-button {
   background-color: var(--button-primary-bg);
   color: var(--bg-secondary) !important;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar-links a.github-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -8px var(--shadow-color-strong);
+}
+
+.navbar-theme {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    background-color: var(--bg-secondary);
+    padding: 1.5rem 2rem 2rem;
+    box-shadow: 0 12px 20px -12px var(--shadow-color-strong);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .navbar-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navbar-theme {
+    align-self: flex-start;
+  }
 }

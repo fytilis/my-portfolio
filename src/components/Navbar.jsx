@@ -1,26 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
-import ThemeToggle from './ThemeToggle.jsx'; // <-- IMPORT ΕΔΩ
+import ThemeToggle from './ThemeToggle.jsx';
+import { useScrollSpy } from '../hooks/useScrollSpy';
+import { FiMenu, FiX } from 'react-icons/fi';
+
+const NAV_LINKS = [
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: 'Contact' },
+];
+
+const SECTION_IDS = NAV_LINKS.map((link) => link.id);
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const activeId = useScrollSpy(SECTION_IDS);
+
+  const closeMenu = () => setIsOpen(false);
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">AF</div>
-      <ul className="navbar-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+      <button
+        className="navbar-toggle"
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-label={isOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={isOpen}
+      >
+        {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+      </button>
+
+      <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
+        {NAV_LINKS.map(({ id, label }) => (
+          <li key={id}>
+            <a
+              href={`#${id}`}
+              onClick={closeMenu}
+              className={activeId === id ? 'active' : ''}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
         <li>
-          <a 
-            href="/Athanasios-Fytilis-CV.pdf" 
-            download="Athanasios-Fytilis-CV.pdf"
+          <a
+            href="/CV_FYTILIS_THANASIS.pdf"
+            download="CV_FYTILIS_THANASIS.pdf"
             className="github-button"
+            onClick={closeMenu}
           >
             CV
           </a>
         </li>
-        <li><ThemeToggle /></li> {/* <-- ΠΡΟΣΘΗΚΗ ΕΔΩ */}
+        <li className="navbar-theme"><ThemeToggle /></li>
       </ul>
     </nav>
   );
